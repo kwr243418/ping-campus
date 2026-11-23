@@ -186,5 +186,5 @@
 - 관련: M6
 - 프롬프트:
   > 이제 깃허브에 올려줘 깃허브 주소는 https://github.com/kwr243418/ping-campus.git 여기야
-- 결과 요약: `git init` 후 첫 커밋을 만들어 `main` 브랜치로 푸시 (`.env.local`·`node_modules`·`.next` 제외 확인)
+- 결과 요약: `git init` 후 첫 커밋을 만들어 `main` 브랜치로 푸시 (`.env.local`·`node_modules`·`.next` 제외 확인). CI의 `npm ci`가 잠금 파일 누락(@emnapi)으로 실패해 Node 24로 맞추고 `package-lock.json`을 다시 생성 → CI 통과
 - 이슈·후속: Vercel 연결, GitHub Actions 비밀값(`APP_URL`, `CRON_SECRET`) 등록은 사용자 계정에서 진행

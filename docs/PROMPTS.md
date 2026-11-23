@@ -188,3 +188,25 @@
   > 이제 깃허브에 올려줘 깃허브 주소는 https://github.com/kwr243418/ping-campus.git 여기야
 - 결과 요약: `git init` 후 첫 커밋을 만들어 `main` 브랜치로 푸시 (`.env.local`·`node_modules`·`.next` 제외 확인). CI의 `npm ci`가 잠금 파일 누락(@emnapi)으로 실패해 Node 24로 맞추고 `package-lock.json`을 다시 생성 → CI 통과
 - 이슈·후속: Vercel 연결, GitHub Actions 비밀값(`APP_URL`, `CRON_SECRET`) 등록은 사용자 계정에서 진행
+
+---
+
+### P11 — README에 다른 컴퓨터 실행 방법 정리
+- 날짜: 2026-11-24
+- 유형: 배포
+- 관련: M6
+- 프롬프트:
+  > README에 다른 컴퓨터에서 실행하는 방법 정리해줘
+- 결과 요약: README '바로 실행하기'를 '다른 컴퓨터에서 실행하기'로 바꿔 준비물(Node 24·Git·Chrome), 받기·설치·실행(Windows 명령 포함), 키 없이 되는 것, 선택 키(VAPID·Anthropic), 같은 Wi-Fi 휴대폰 확인, 문제 해결 표를 정리
+- 이슈·후속: 없음
+
+---
+
+### P12 — README 변경 올리기·서버 종료
+- 날짜: 2026-11-24
+- 유형: 배포
+- 관련: M6
+- 프롬프트:
+  > 깃허브에 올리고 서버 종료시켜줘
+- 결과 요약: README·PROMPTS 변경을 커밋해 `main`에 푸시하고 로컬 개발 서버 종료
+- 이슈·후속: 없음

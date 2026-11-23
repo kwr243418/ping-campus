@@ -8,24 +8,68 @@
 
 기획 문서: [`docs/PRD.md`](docs/PRD.md) · 개발 규칙: [`CLAUDE.md`](CLAUDE.md) · 프롬프트 기록: [`docs/PROMPTS.md`](docs/PROMPTS.md)
 
-## 바로 실행하기
+## 다른 컴퓨터에서 실행하기
+
+Vercel·Supabase 없이 내 컴퓨터에서 바로 데모를 돌릴 수 있습니다.
+
+### 1. 준비물
+
+- **Node.js 24** (20 이상이면 대부분 동작, CI는 24 사용) — https://nodejs.org 에서 LTS 설치 후 `node -v`로 확인
+- **Git** — `git --version`으로 확인 (없으면 GitHub에서 **Code → Download ZIP**으로 받아도 됩니다)
+- **Chrome** 권장 (푸시 알림·PWA 확인용)
+
+### 2. 받기 · 설치 · 실행
 
 ```bash
+git clone https://github.com/kwr243418/ping-campus.git
+cd ping-campus
 npm install
-cp .env.example .env.local   # 값은 비워 둬도 데모가 동작합니다
+cp .env.example .env.local   # Windows(PowerShell): copy .env.example .env.local
 npm run dev                  # http://localhost:3000
 ```
 
-키가 없어도 데모가 돌아갑니다.
+브라우저에서 http://localhost:3000 을 열면 온보딩부터 시작합니다. 휴대폰 화면으로 보려면 Chrome 개발자도구(macOS ⌥⌘I / Windows F12)에서 기기 모드(⇧⌘M / Ctrl+Shift+M)를 켜세요.
+
+### 3. 키 없이 되는 것과 대체 방식
+
+`.env.local` 값을 비워 둬도 데모가 돌아갑니다.
 
 | 없을 때 | 대신 |
 |---|---|
-| `ANTHROPIC_API_KEY` | 정규식 대체 파서로 공지 정리 (이미지·시간표 캡처 인식은 안내 문구) |
-| `SUPABASE_*` | 서버 메모리 저장소 (개발 서버를 껐다 켜면 공유 행사·예약 초기화) |
-| VAPID 키 | 앱 안 알림센터(🔔)로만 알림 |
+| `ANTHROPIC_API_KEY` | 정규식 대체 파서로 공지 정리 (포스터 이미지·시간표 캡처 인식은 텍스트로 붙여넣으라는 안내) |
+| `SUPABASE_*` | 서버 메모리 저장소 (개발 서버를 껐다 켜면 공유 행사·알림 예약 초기화) |
+| VAPID 키 | 앱 안 알림센터(🔔)와 브라우저 알림으로만 표시 |
 | 외부 스케줄러 | 개발 서버가 1분마다 같은 발송 로직을 직접 실행 (`instrumentation-node.ts`) |
 
-로컬에서 실제 푸시까지 보려면 `npx web-push generate-vapid-keys`로 만든 키를 `.env.local`에 넣고, 설정 → "푸시 알림 켜기"를 누르세요.
+데모 도구(설정 → 테스트 모드의 '현재 시각 바꾸기', '가상 학과 친구가 등록하기')는 개발 서버에서 기본으로 켜져 있습니다.
+
+### 4. (선택) 키 넣기
+
+`.env.local`은 GitHub에 올라가지 않으므로 컴퓨터마다 따로 만듭니다. 바꾼 뒤에는 개발 서버를 다시 켜세요.
+
+- **실제 푸시 알림**: 아래 명령으로 만든 두 값을 넣고, 앱의 설정 → "푸시 알림 켜기" → "지금 알림 보내기"
+  ```bash
+  npx web-push generate-vapid-keys
+  ```
+  ```
+  NEXT_PUBLIC_VAPID_PUBLIC_KEY=<Public Key>
+  VAPID_PRIVATE_KEY=<Private Key>
+  ```
+- **AI 공지 정리·이미지 인식**: `ANTHROPIC_API_KEY=<내 키>`
+
+### 5. 휴대폰에서 같이 보기 (선택)
+
+컴퓨터와 휴대폰이 같은 Wi-Fi에 있으면 휴대폰 브라우저에서 `http://<컴퓨터 IP>:3000` 으로 열 수 있습니다(맥: 시스템 설정 → Wi-Fi → 세부사항, Windows: `ipconfig`). 단, 푸시 알림과 앱 설치(PWA)는 https 또는 localhost에서만 되므로 휴대폰에서는 화면 확인용으로 쓰세요.
+
+### 6. 잘 안 될 때
+
+| 증상 | 해결 |
+|---|---|
+| `npm install` 실패 | `node -v`가 20 이상인지 확인 → `node_modules`를 지우고 다시 `npm install` |
+| 3000번 포트를 이미 사용 중 | `npm run dev -- -p 3001` 후 http://localhost:3001 |
+| 화면이 이상하거나 예전 데이터가 보임 | 설정 맨 아래 **데모 데이터로 초기화**, 또는 개발자도구 → Application → Local Storage 지우기 |
+| 알림 C가 안 옴 | 두 창(일반 + 시크릿)의 학과·학년이 같은지, 행사가 **오늘·6시간 이내**인지 확인 |
+| 푸시가 안 뜸 | VAPID 키를 넣고 서버를 다시 켰는지, 브라우저·OS 알림 권한이 허용인지 확인 (없어도 🔔 알림센터에는 쌓임) |
 
 ## 시연 순서 (UT 과업과 같은 흐름)
 

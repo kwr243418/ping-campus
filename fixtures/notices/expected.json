@@ -1,0 +1,16 @@
+{
+  "baseDate": "2026-11-18",
+  "postedAt": "2026-11-18T09:00:00+09:00",
+  "notices": [
+    { "file": "01.txt", "date": "2026-11-20", "startTime": "17:00", "location": "인문관 301호" },
+    { "file": "02.txt", "date": "2026-11-18", "startTime": "18:30", "location": "학생회관 2층 라운지" },
+    { "file": "03.txt", "date": "2026-11-24", "startTime": "14:00", "location": "학생회관 대강당" },
+    { "file": "04.txt", "date": "2026-11-27", "startTime": "15:30", "location": "공학관 105호" },
+    { "file": "05.txt", "date": "2026-11-20", "startTime": "19:00", "location": "학생회관 소극장" },
+    { "file": "06.txt", "date": "2026-11-26", "startTime": "12:10", "location": "본관 2층 회의실" },
+    { "file": "07.txt", "date": "2026-11-19", "startTime": "16:00", "location": null },
+    { "file": "08.txt", "date": "2026-12-03", "startTime": "10:00", "location": "도서관 3층 세미나실" },
+    { "file": "09.txt", "date": "2026-11-23", "startTime": "19:00", "location": "공학관 501호" },
+    { "file": "10.txt", "date": "2026-12-01", "startTime": null, "location": "인문관 대강당" }
+  ]
+}

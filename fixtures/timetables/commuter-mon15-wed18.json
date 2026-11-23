@@ -1,0 +1,11 @@
+{
+  "description": "통학생: 월 15:00, 화 16:30, 수 18:00, 목 13:00 종료",
+  "semesterStart": "2026-09-01", "semesterEnd": "2026-12-21",
+  "classes": [
+    { "id": "a", "weekday": 1, "start": "13:30", "end": "15:00" },
+    { "id": "b", "weekday": 2, "start": "15:00", "end": "16:30" },
+    { "id": "c", "weekday": 3, "start": "16:30", "end": "18:00" },
+    { "id": "d", "weekday": 4, "start": "10:30", "end": "13:00" }
+  ],
+  "exceptions": []
+}

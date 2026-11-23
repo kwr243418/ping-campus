@@ -1,0 +1,18 @@
+# 학교 홈페이지 공지 수집 (FR-9): 매일 07:00, 13:00 (KST) = 22:00, 04:00 (UTC)
+name: cron-notices
+on:
+  schedule:
+    - cron: "0 22,4 * * *"
+  workflow_dispatch:
+jobs:
+  notices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Call notices cron
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$APP_URL" ] || [ -z "$CRON_SECRET" ]; then echo "APP_URL/CRON_SECRET 미설정 — 건너뜀"; exit 0; fi
+          curl -fsS -X POST -H "Authorization: Bearer $CRON_SECRET" "$APP_URL/api/cron/notices"

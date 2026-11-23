@@ -1,0 +1,9 @@
+{
+  "description": "기숙사생: 화·목 오전 수업만",
+  "semesterStart": "2026-09-01", "semesterEnd": "2026-12-21",
+  "classes": [
+    { "id": "a", "weekday": 2, "start": "09:00", "end": "10:30" },
+    { "id": "b", "weekday": 4, "start": "09:00", "end": "10:30" }
+  ],
+  "exceptions": []
+}

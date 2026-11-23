@@ -1,0 +1,12 @@
+{
+  "description": "수업 5개, 수요일 휴강 예외 포함 (UT 과업 1·4)",
+  "semesterStart": "2026-09-01", "semesterEnd": "2026-12-21",
+  "classes": [
+    { "id": "a", "weekday": 1, "start": "09:00", "end": "10:30" },
+    { "id": "b", "weekday": 1, "start": "13:00", "end": "14:30" },
+    { "id": "c", "weekday": 3, "start": "10:30", "end": "12:00" },
+    { "id": "d", "weekday": 3, "start": "15:00", "end": "18:00" },
+    { "id": "e", "weekday": 5, "start": "11:00", "end": "12:30" }
+  ],
+  "exceptions": [{ "date": "2026-11-25", "type": "cancel", "classId": "d" }]
+}
